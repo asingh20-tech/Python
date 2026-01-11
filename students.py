@@ -1,13 +1,14 @@
 def main():
-    name = get_name()
-    house = get_house()
-    print(f"{name} from {house}")
+    student = get_student()
+    if student[0] == "Padma":
+        student[1] = "Ravenclaw"
+    print(f"{student[0]} from {student [1]}")
 
-def get_name():
-    return input("what's you name? ")
+def get_student():
+    name = input("name: ")
+    house = input("house: ")
+    return [name,house] # learned about the concept of tuple immutable 
 
-def get_house():        
-    return input("house: ")
 
 if __name__ == "__main__":
     main() 
