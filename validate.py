@@ -3,7 +3,7 @@ import re
 
 email = input("whats your email?").strip()
 
-if re.search(r"^\w.+@(\w+\.)?\w+\.edu$",email, re.IGNORECASE):#re.IGNORECASE,re.MULTILINE,re.DOTALL
+if re.search(r"^\w+@(\w+\.)?\w+\.edu$",email, re.IGNORECASE):#re.IGNORECASE,re.MULTILINE,re.DOTALL
     print("Valid")
 else :
     print("Invalid")   
