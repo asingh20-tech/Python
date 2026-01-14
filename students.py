@@ -7,8 +7,8 @@ class Student:
         # so with oop it helps us to make our own exceptions
         if not name:
             raise ValueError("Missing Name")
-        if house not in ["Gryffindor","Slytherin","RavenClaw","HufflePuff"]:
-            raise ValueError("Invalid House")
+        # if house not in ["Gryffindor","Slytherin","RavenClaw","HufflePuff"]:
+        #     raise ValueError("Invalid House"). <--no longer need this 
         
         self.name = name 
         self.house = house
@@ -16,22 +16,24 @@ class Student:
 
     def __str__(self):
         return f"{self.name} is {self.house}"
+    # help in encapsulation and all that stuff
+    @property #getter
+    def house(self):
+        return self._house
     
-    def charm(self):
-        match self.patronus: #its like switch in java
-            case "Stag":
-                return "🐴"
-            case "Otter":
-                return "🦦"
-            case _:
-                return "🪄 "
+    @house.setter #setter
+    def house(self,house):
+        if house not in ["Gryffindor","Slytherin","RavenClaw","HufflePuff"]:
+            raise ValueError("Invalid House")
+        self._house= house
+
+
 
 def main():
     student = get_student()
     if student.name == "Padma":
         student.house = "Ravenclaw"
-    print(f"Expecto patronum!")
-    print (student.charm())    
+    student.house= "yoo yoo" 
     print(student)
 
 def get_student():
