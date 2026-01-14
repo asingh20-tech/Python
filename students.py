@@ -12,20 +12,36 @@ class Student:
         
         self.name = name 
         self.house = house
-        self.patronus = patronus
+        
 
     def __str__(self):
         return f"{self.name} is {self.house}"
+    
+
     # help in encapsulation and all that stuff
     @property #getter
     def house(self):
-        return self._house
-    
+        return self._house 
+     #why you put the undersore because you want the python to get confuse between the functions and the methods
+
     @house.setter #setter
     def house(self,house):
         if house not in ["Gryffindor","Slytherin","RavenClaw","HufflePuff"]:
             raise ValueError("Invalid House")
         self._house= house
+
+
+    @property
+    def name(self):
+        return self.__name
+    
+    @name.setter
+    def name(self, name):
+        if not name:
+            raise ValueError("Missing Name")
+        self._name= name
+
+   
 
 
 
