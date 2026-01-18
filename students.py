@@ -40,24 +40,21 @@ class Student:
         if not name:
             raise ValueError("Missing Name")
         self._name= name
-
+        
+    @classmethod
+    def get (cls):
+        name = input("name:")
+        house = input("house:")
+        return cls(name,house)
    
 
-
-
 def main():
-    student = get_student()
+    student = Student.get()
     if student.name == "Padma":
         student.house = "Ravenclaw"
     student.house= "yoo yoo" 
     print(student)
 
-def get_student():
-    name = input("Name: ")
-    house = input("House: ")
-    patronus = input ("Patronus : ")
-    student = Student(name,house,patronus)
-    return student
 
 if __name__ == "__main__":
     main() 
