@@ -1,5 +1,6 @@
 import os
 import sys
+import subprocess
 
 # check that directory argument exists
 if len(sys.argv) != 2:
@@ -7,14 +8,16 @@ if len(sys.argv) != 2:
     sys.exit(1)
 
 for entry in os.listdir(sys.argv[1]):
+    subprocess.run(["wc", "-l", entry])
     first,last = entry.split(".")
+    
     with open(f"summary_{first}.html", "w") as file:
         html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
 
     <meta charset="UTF-8">
-    <title>Summary A1</title>
+    <title>Summary """ + first + """</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
