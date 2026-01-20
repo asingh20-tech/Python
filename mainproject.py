@@ -12,21 +12,18 @@ if len(sys.argv) != 2:
   
 
 for entry in os.listdir(sys.argv[1]):
-    full_path = os.path.join("/user","/adityarajsingh","csc344")
-    subprocess.run(["wc", "-l", entry])
+    full_path = os.path.join(sys.argv[1],entry)
+    subprocess.run(["wc", "-l", full_path])
     identifiers = Counter()  
     first,last = entry.split(".")
-    for line in entry:
-        words = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', entry)
-        for word in words:
-            # Further filter: if it's a known Python keyword, it's not an identifier to count
-            # (You'd need a comprehensive list of keywords)
-            if word not in ['if', 'else', 'for', 'while', 'def', 'class', 'return', 'True', 'False', 'None','Void']:
+    with open(full_path, errors="ignore") as f:
+        for line in f:
+            words = re.findall(r'\b[a-zA-Z_][a-zA-Z0-9_]*\b', line)
+
+            for word in words:
                 identifiers[word] += 1
         
     with open(f"summary_{first}.html", "w") as file:
-        
-
         html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
