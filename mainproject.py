@@ -3,6 +3,7 @@ import sys
 import subprocess
 import re
 from collections import Counter
+import tarfile
 
 
 # check that directory argument exists
